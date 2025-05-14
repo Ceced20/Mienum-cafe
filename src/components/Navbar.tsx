@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
   
   useEffect(() => {
@@ -15,11 +16,36 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+      
+      // Determine active section based on scroll position
+      const sections = ['home', 'about', 'featured', 'menu', 'gallery', 'contact'];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80, // Offset for navbar height
+        behavior: 'smooth'
+      });
+    }
+  };
   
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
@@ -30,53 +56,63 @@ const Navbar = () => {
             alt="Mie-num Logo" 
             className="h-10 w-auto"
           />
-          <span className={`text-xl font-bold transition-colors duration-300 ${isScrolled || location.pathname !== '/' ? 'text-mienum-red' : 'text-white'} hidden md:inline`}>
+          <span className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-mienum-red' : 'text-white'} hidden md:inline`}>
             Mie-num
           </span>
         </Link>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link 
-            to="/" 
+          <button 
+            onClick={() => scrollToSection('home')} 
             className={`font-medium text-sm transition-colors duration-200 ${
-              isScrolled || location.pathname !== '/' 
+              isScrolled 
                 ? 'text-gray-800 hover:text-mienum-red' 
                 : 'text-white hover:text-mienum-yellow'
-            } ${location.pathname === '/' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+            } ${activeSection === 'home' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
           >
             Home
-          </Link>
-          <Link 
-            to="/menu" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('about')} 
             className={`font-medium text-sm transition-colors duration-200 ${
-              isScrolled || location.pathname !== '/' 
+              isScrolled 
                 ? 'text-gray-800 hover:text-mienum-red' 
                 : 'text-white hover:text-mienum-yellow'
-            } ${location.pathname === '/menu' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+            } ${activeSection === 'about' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+          >
+            About
+          </button>
+          <button 
+            onClick={() => scrollToSection('menu')} 
+            className={`font-medium text-sm transition-colors duration-200 ${
+              isScrolled 
+                ? 'text-gray-800 hover:text-mienum-red' 
+                : 'text-white hover:text-mienum-yellow'
+            } ${activeSection === 'menu' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
           >
             Menu
-          </Link>
-          <Link 
-            to="/gallery" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('gallery')} 
             className={`font-medium text-sm transition-colors duration-200 ${
-              isScrolled || location.pathname !== '/' 
+              isScrolled 
                 ? 'text-gray-800 hover:text-mienum-red' 
                 : 'text-white hover:text-mienum-yellow'
-            } ${location.pathname === '/gallery' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+            } ${activeSection === 'gallery' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
           >
             Gallery
-          </Link>
-          <Link 
-            to="/contact" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')} 
             className={`font-medium text-sm transition-colors duration-200 ${
-              isScrolled || location.pathname !== '/' 
+              isScrolled 
                 ? 'text-gray-800 hover:text-mienum-red' 
                 : 'text-white hover:text-mienum-yellow'
-            } ${location.pathname === '/contact' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+            } ${activeSection === 'contact' ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
           >
             Contact
-          </Link>
+          </button>
           <a 
             href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213" 
             target="_blank" 
@@ -90,7 +126,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button 
           className={`md:hidden ${
-            isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-white'
+            isScrolled ? 'text-gray-700' : 'text-white'
           }`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -102,18 +138,21 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 py-4 shadow-lg">
           <div className="container mx-auto px-6 flex flex-col space-y-4">
-            <Link to="/" className="py-2 text-gray-800 hover:text-mienum-red font-medium" onClick={() => setIsMenuOpen(false)}>
+            <button onClick={() => scrollToSection('home')} className="py-2 text-gray-800 hover:text-mienum-red font-medium">
               Home
-            </Link>
-            <Link to="/menu" className="py-2 text-gray-800 hover:text-mienum-red font-medium" onClick={() => setIsMenuOpen(false)}>
+            </button>
+            <button onClick={() => scrollToSection('about')} className="py-2 text-gray-800 hover:text-mienum-red font-medium">
+              About
+            </button>
+            <button onClick={() => scrollToSection('menu')} className="py-2 text-gray-800 hover:text-mienum-red font-medium">
               Menu
-            </Link>
-            <Link to="/gallery" className="py-2 text-gray-800 hover:text-mienum-red font-medium" onClick={() => setIsMenuOpen(false)}>
+            </button>
+            <button onClick={() => scrollToSection('gallery')} className="py-2 text-gray-800 hover:text-mienum-red font-medium">
               Gallery
-            </Link>
-            <Link to="/contact" className="py-2 text-gray-800 hover:text-mienum-red font-medium" onClick={() => setIsMenuOpen(false)}>
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="py-2 text-gray-800 hover:text-mienum-red font-medium">
               Contact
-            </Link>
+            </button>
             <a 
               href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213" 
               target="_blank" 
