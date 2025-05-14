@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import GoFoodButton from '../components/GoFoodButton';
@@ -87,42 +87,69 @@ const Menu = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
       
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="section-title mb-10">Our Menu</h2>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 tracking-tight">Our Menu</h2>
           
           <Tabs defaultValue="drinks" className="w-full">
-            <TabsList className="mb-8 flex flex-wrap justify-center gap-2">
-              <TabsTrigger value="drinks" className="bg-mienum-yellow text-gray-800 data-[state=active]:bg-mienum-red data-[state=active]:text-white">
-                Minuman
+            <TabsList className="mb-12 flex flex-wrap justify-center gap-3 bg-transparent">
+              <TabsTrigger 
+                value="drinks" 
+                className="px-6 py-3 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:bg-mienum-red data-[state=active]:text-white data-[state=active]:border-transparent hover:border-mienum-red transition-all duration-200"
+              >
+                Beverages
               </TabsTrigger>
-              <TabsTrigger value="food" className="bg-mienum-yellow text-gray-800 data-[state=active]:bg-mienum-red data-[state=active]:text-white">
-                Makanan
+              <TabsTrigger 
+                value="food" 
+                className="px-6 py-3 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:bg-mienum-red data-[state=active]:text-white data-[state=active]:border-transparent hover:border-mienum-red transition-all duration-200"
+              >
+                Food
               </TabsTrigger>
-              <TabsTrigger value="economic" className="bg-mienum-yellow text-gray-800 data-[state=active]:bg-mienum-red data-[state=active]:text-white">
-                Menu Ekonomis
+              <TabsTrigger 
+                value="economic" 
+                className="px-6 py-3 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:bg-mienum-red data-[state=active]:text-white data-[state=active]:border-transparent hover:border-mienum-red transition-all duration-200"
+              >
+                Economic Menu
               </TabsTrigger>
-              <TabsTrigger value="premium" className="bg-mienum-yellow text-gray-800 data-[state=active]:bg-mienum-red data-[state=active]:text-white">
-                Mienuman Susu (Premium)
+              <TabsTrigger 
+                value="premium" 
+                className="px-6 py-3 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:bg-mienum-red data-[state=active]:text-white data-[state=active]:border-transparent hover:border-mienum-red transition-all duration-200"
+              >
+                Premium Milk Series
               </TabsTrigger>
             </TabsList>
             
             <TabsContent value="drinks" className="mt-6">
               <Tabs defaultValue="teakopi" className="w-full">
-                <TabsList className="mb-6 flex flex-wrap justify-center gap-2">
-                  <TabsTrigger value="teakopi">Teh & Kopi</TabsTrigger>
-                  <TabsTrigger value="milky">Milky Series</TabsTrigger>
-                  <TabsTrigger value="mojito">Mojito & Tea Fusion</TabsTrigger>
+                <TabsList className="mb-10 flex flex-wrap justify-center gap-3 bg-transparent">
+                  <TabsTrigger 
+                    value="teakopi"
+                    className="px-5 py-2 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:border-mienum-red data-[state=active]:text-mienum-red hover:border-mienum-red transition-all duration-200"
+                  >
+                    Tea & Coffee
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="milky"
+                    className="px-5 py-2 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:border-mienum-red data-[state=active]:text-mienum-red hover:border-mienum-red transition-all duration-200"
+                  >
+                    Milky Series
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="mojito"
+                    className="px-5 py-2 rounded-full text-sm font-medium border border-gray-200 data-[state=active]:border-mienum-red data-[state=active]:text-mienum-red hover:border-mienum-red transition-all duration-200"
+                  >
+                    Mojito & Tea Fusion
+                  </TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="teakopi" className="mt-4">
                   <MenuSection 
-                    title="Teh & Kopi" 
+                    title="Tea & Coffee" 
                     items={tehKopiItems} 
-                    bgColor="bg-gray-50"
+                    bgColor="bg-white"
                   />
                 </TabsContent>
                 
@@ -130,7 +157,7 @@ const Menu = () => {
                   <MenuSection 
                     title="Milky Series" 
                     items={milkySeriesItems} 
-                    bgColor="bg-gray-50"
+                    bgColor="bg-white"
                   />
                 </TabsContent>
                 
@@ -138,7 +165,7 @@ const Menu = () => {
                   <MenuSection 
                     title="Mojito & Tea Fusion" 
                     items={mojitoItems} 
-                    bgColor="bg-gray-50"
+                    bgColor="bg-white"
                   />
                 </TabsContent>
               </Tabs>
@@ -148,7 +175,7 @@ const Menu = () => {
               <MenuSection 
                 title="Main Dishes" 
                 items={foodItems} 
-                bgColor="bg-gray-50"
+                bgColor="bg-white"
               />
             </TabsContent>
             
@@ -156,7 +183,7 @@ const Menu = () => {
               <MenuSection 
                 title="Budget-Friendly Options" 
                 items={economicItems} 
-                bgColor="bg-gray-50"
+                bgColor="bg-white"
               />
             </TabsContent>
             
@@ -164,7 +191,7 @@ const Menu = () => {
               <MenuSection 
                 title="Premium Milk Beverages" 
                 items={premiumItems} 
-                bgColor="bg-gray-50"
+                bgColor="bg-white"
               />
             </TabsContent>
           </Tabs>

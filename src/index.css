@@ -22,8 +22,8 @@
     --secondary: 46 100% 50%;  /* Mie-num yellow */
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 0 0% 93%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 45%;
 
     --accent: 46 100% 95%;
     --accent-foreground: 0 0% 10%;
@@ -35,7 +35,7 @@
     --input: 0 0% 90%;
     --ring: 0 96% 47%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   * {
@@ -48,32 +48,50 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold;
+    @apply font-display font-bold tracking-tight;
   }
 }
 
 @layer components {
   .menu-title {
-    @apply text-xl md:text-2xl font-bold text-mienum-red mb-2;
+    @apply text-xl md:text-2xl font-medium text-gray-900 mb-3;
   }
 
   .menu-description {
-    @apply text-sm text-gray-600 mb-1 italic;
+    @apply text-sm text-gray-500 mb-1 italic;
   }
 
   .menu-price {
-    @apply text-base font-bold text-mienum-red;
+    @apply text-base font-medium text-mienum-red;
   }
   
   .menu-item {
-    @apply border-b border-gray-200 py-4 last:border-0;
+    @apply border-b border-gray-100 py-5 last:border-0 hover:bg-gray-50 transition-colors duration-200;
   }
 
   .section-title {
-    @apply text-2xl md:text-3xl font-bold text-center mb-6 relative;
+    @apply text-3xl md:text-4xl font-bold text-center mb-8 relative;
   }
   
   .section-title::after {
-    @apply content-[''] absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-mienum-yellow;
+    @apply content-[''] absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-mienum-yellow;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+  
+  /* Modern button styles */
+  .btn-primary {
+    @apply rounded-full bg-mienum-red text-white px-6 py-3 font-medium transition-all duration-300 hover:bg-red-700 hover:shadow-lg hover:shadow-mienum-red/20 focus:ring-2 focus:ring-mienum-red/50 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply rounded-full bg-mienum-yellow text-gray-900 px-6 py-3 font-medium transition-all duration-300 hover:bg-yellow-400 hover:shadow-lg hover:shadow-mienum-yellow/20 focus:ring-2 focus:ring-mienum-yellow/50 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply rounded-full bg-transparent border border-white text-white px-6 py-3 font-medium transition-all duration-300 hover:bg-white/10;
   }
 }

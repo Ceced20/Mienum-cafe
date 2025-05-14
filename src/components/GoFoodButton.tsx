@@ -1,18 +1,25 @@
 
 import React from 'react';
-import { ShoppingCart } from 'lucide-react';
 
 const GoFoodButton = () => {
   return (
-    <a 
-      href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-mienum-red text-white rounded-full p-4 shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2"
-    >
-      <ShoppingCart size={24} />
-      <span className="hidden md:inline font-bold">Order on GoFood</span>
-    </a>
+    <div className="fixed bottom-8 right-8 z-40">
+      <a
+        href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 bg-mienum-red text-white px-5 py-4 rounded-full shadow-lg hover:bg-red-700 transition-all duration-300 group hover:shadow-xl hover:shadow-mienum-red/20"
+      >
+        <span className="text-sm font-bold">Order on GoFood</span>
+        <div className="bg-white rounded-full p-1 transform transition-transform duration-300 group-hover:rotate-12">
+          <img 
+            src="/lovable-uploads/ae8e3626-781e-4cfa-922e-454d6ea48ff3.png" 
+            alt="Mie-num" 
+            className="h-6 w-6 object-contain"
+          />
+        </div>
+      </a>
+    </div>
   );
 };
 

@@ -26,25 +26,25 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
       
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="section-title mb-10">Our Gallery</h2>
+      <section className="py-24 mt-16">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 tracking-tight">Gallery</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryImages.map((image, index) => (
-              <div key={index} className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <AspectRatio ratio={4/3} className="bg-muted">
+              <div key={index} className="group overflow-hidden rounded-2xl shadow-md transition-all duration-500 hover:shadow-xl">
+                <AspectRatio ratio={4/3} className="bg-gray-100">
                   <img 
                     src={image.src} 
                     alt={image.alt}
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                   />
                 </AspectRatio>
-                <div className="p-4 bg-white">
-                  <h3 className="text-lg font-bold text-mienum-red">{image.title}</h3>
+                <div className="p-6 bg-white">
+                  <h3 className="text-lg font-medium text-gray-900 group-hover:text-mienum-red transition-colors duration-300">{image.title}</h3>
                 </div>
               </div>
             ))}
