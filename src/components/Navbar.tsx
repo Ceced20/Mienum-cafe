@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,21 +9,21 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 bg-white shadow-md z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img 
             src="/lovable-uploads/ae8e3626-781e-4cfa-922e-454d6ea48ff3.png" 
             alt="Mie-num Logo" 
             className="h-12 w-auto"
           />
           <span className="text-xl font-bold text-mienum-red hidden md:inline">Mie-num</span>
-        </a>
+        </Link>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="text-gray-800 hover:text-mienum-red font-medium">Home</a>
-          <a href="#about" className="text-gray-800 hover:text-mienum-red font-medium">About</a>
-          <a href="#featured" className="text-gray-800 hover:text-mienum-red font-medium">Featured</a>
-          <a href="#menu" className="text-gray-800 hover:text-mienum-red font-medium">Menu</a>
+          <Link to="/" className="text-gray-800 hover:text-mienum-red font-medium">Home</Link>
+          <Link to="/menu" className="text-gray-800 hover:text-mienum-red font-medium">Menu</Link>
+          <Link to="/gallery" className="text-gray-800 hover:text-mienum-red font-medium">Gallery</Link>
+          <Link to="/contact" className="text-gray-800 hover:text-mienum-red font-medium">Contact</Link>
           <a 
             href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213" 
             target="_blank" 
@@ -46,10 +47,10 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 py-2">
           <div className="container mx-auto px-4 flex flex-col">
-            <a href="#home" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Home</a>
-            <a href="#about" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#featured" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Featured</a>
-            <a href="#menu" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Menu</a>
+            <Link to="/" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link to="/menu" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Menu</Link>
+            <Link to="/gallery" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
+            <Link to="/contact" className="py-2 text-gray-800 hover:text-mienum-red" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <a 
               href="https://gofood.co.id/bandung/restaurant/mie-num-spbu-cibolerang-7ac50a8e-2a8d-438e-b965-99886bfc3213" 
               target="_blank" 

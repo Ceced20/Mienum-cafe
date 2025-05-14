@@ -16,7 +16,7 @@ const Hero = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a 
-                  href="#menu" 
+                  href="/menu" 
                   className="bg-mienum-yellow text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-colors"
                 >
                   View Menu
@@ -34,17 +34,10 @@ const Hero = () => {
             <div className="md:w-1/2 flex justify-center">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/e0d76fac-abc6-4721-b452-d3c434d56f05.png" 
-                  alt="Mie-num Dimsum Promotion" 
-                  className="rounded-lg shadow-lg max-w-full h-auto"
+                  src="/lovable-uploads/ae8e3626-781e-4cfa-922e-454d6ea48ff3.png" 
+                  alt="Mie-num Logo" 
+                  className="h-72 w-72 object-contain animate-pulse"
                 />
-                <div className="absolute -bottom-6 -right-6 animate-wiggle">
-                  <img 
-                    src="/lovable-uploads/ae8e3626-781e-4cfa-922e-454d6ea48ff3.png" 
-                    alt="Mie-num Character" 
-                    className="h-24 w-24"
-                  />
-                </div>
               </div>
             </div>
           </div>
