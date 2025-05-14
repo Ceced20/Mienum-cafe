@@ -1,13 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +48,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
+        <button onClick={() => scrollToSection('home')} className="flex items-center gap-2">
           <img 
             src="/lovable-uploads/ae8e3626-781e-4cfa-922e-454d6ea48ff3.png" 
             alt="Mie-num Logo" 
@@ -59,7 +57,7 @@ const Navbar = () => {
           <span className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-mienum-red' : 'text-white'} hidden md:inline`}>
             Mie-num
           </span>
-        </Link>
+        </button>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
